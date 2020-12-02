@@ -1,5 +1,5 @@
 FROM python:3.7-alpine
-MAINTAINER mikaelmaingard
+# MAINTAINER mikaelmaingard
 
 ENV PYTHONUNBUFFERED 1
 
@@ -11,4 +11,4 @@ WORKDIR /app
 COPY ./app /app
 
 RUN adduser -D user
-USER user
+USER user 
