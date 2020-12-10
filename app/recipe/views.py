@@ -26,7 +26,9 @@ class TagViewSet(viewsets.GenericViewSet,
             user=self.request.user)  # set user to authenitcated user
 
 
-class IngredientViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
+class IngredientViewSet(viewsets.GenericViewSet,
+                        mixins.ListModelMixin,
+                        mixins.CreateModelMixin):
     """Manage ingredients in the database"""
     authentication_classes = (TokenAuthentication,)
     # make sure users are authenticated
@@ -38,3 +40,8 @@ class IngredientViewSet(viewsets.GenericViewSet, mixins.ListModelMixin):
         """Return onjects for the current authenticated user only"""
         # filter for the requesting user
         return self.queryset.filter(user=self.request.user).order_by('-name')
+
+    # override default method
+    def perform_create(self, serializer):
+        """Create a nee ingredient"""
+        serializer.save(user=self.request.user)  # set user to requesting user
