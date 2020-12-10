@@ -35,7 +35,7 @@ class PrivateTagsApiTests(TestCase):
             'testpass123'
         )
         self.client = APIClient()  # create API client
-        self.client.force_authenticate(self.user)
+        self.client.force_authenticate(self.user)  # authenticate the user
 
     def test_retrieve_tags(self):
         """Test retrieving tags"""
