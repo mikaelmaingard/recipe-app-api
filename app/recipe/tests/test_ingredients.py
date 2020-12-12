@@ -72,7 +72,7 @@ class PrivateIngredientsApiTests(TestCase):
 
         # check correct status code
         self.assertEqual(res.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(res.data), 1)  # check expected lenght
+        self.assertEqual(len(res.data), 1)  # check expected length
         self.assertEqual(res.data[0]['name'], ingredient.name)
 
     def test_create_ingredient_successfully(self):
